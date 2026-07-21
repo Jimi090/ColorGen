@@ -1,3 +1,4 @@
+import './styles.css';
 import chroma from 'chroma-js';
 
 var favorites = new Set(JSON.parse(localStorage.getItem('favorites')) || []);
