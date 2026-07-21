@@ -22,7 +22,9 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 3rem;
+    flex-wrap: wrap;
+    flex-direction: column;
+    margin-top: 2rem;
 }
 #generetePaletteBtn {
     background-color: #323232;
@@ -30,7 +32,19 @@ main {
     padding: 1rem;
     border-radius: 12px;
     cursor: pointer;
+    margin-bottom: 3rem;
 }
 #generetePaletteBtn:hover {
     color: #dcd427;
+}
+#paletteContainer {
+    width: fit-content;
+    height: fit-content;
+}
+.colorBoxes {
+    width: 40rem;
+    height: 8rem;
+    background-color: yellow;
+    text-align: end;
+    font-size: 2rem;
 }
