@@ -30,7 +30,7 @@ Color Palette Generator. Simple, fast and private. Mady by developer for develop
 
 ## Demo
 
-link
+[Live Demo](https://jimi090.github.io/ColorGen/)
 
 ![favoritesPreview](/preview/preview2.png)
 
