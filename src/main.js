@@ -238,3 +238,52 @@ document.getElementById('favoritesButton').addEventListener('click', () => {
         document.getElementById('favoritesContainer').style.display = 'none';
     }
 });
+
+//copy CSS
+document.getElementById('copyCSS').addEventListener('click', () => {
+    let text = `:root {
+    --primary: ${paletteGlobal[0]};
+    --secondary: ${paletteGlobal[1]};
+    --accent: ${paletteGlobal[2]};
+    --success: ${paletteGlobal[3]};
+    --danger: ${paletteGlobal[4]};
+}`;
+    navigator.clipboard.writeText(text);
+    alertSth('Copied!', 1000);
+});
+
+//copy Tailwind
+document.getElementById('copyTailwind').addEventListener('click', () => {
+    let text = `export default {
+    theme: {
+        extend: {
+            colors: {
+                primary: "${paletteGlobal[0]}",
+                secondary: "${paletteGlobal[1]}",
+                accent: "${paletteGlobal[2]}",
+                success: "${paletteGlobal[3]}",
+                danger: "${paletteGlobal[4]}"
+            }
+        }
+    }
+}`;
+    navigator.clipboard.writeText(text);
+    alertSth('Copied!', 1000);
+});
+
+//copy JSON
+document.getElementById('copyJSON').addEventListener('click', () => {
+    let text = JSON.stringify(
+        {
+            primary: paletteGlobal[0],
+            secondary: paletteGlobal[1],
+            accent: paletteGlobal[2],
+            success: paletteGlobal[3],
+            danger: paletteGlobal[4],
+        },
+        null,
+        4,
+    );
+    navigator.clipboard.writeText(text);
+    alertSth('Copied!', 1000);
+});
