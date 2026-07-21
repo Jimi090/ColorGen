@@ -12,6 +12,15 @@ body {
     height: auto;
     overflow-x: hidden;
 }
+button {
+    font: inherit;
+    color: inherit;
+    border: 0;
+}
+button:focus-visible {
+    outline: 3px solid #dcd427;
+    outline-offset: 4px;
+}
 header {
     width: 100%;
     height: fit-content;
@@ -195,6 +204,7 @@ main {
     width: 2rem;
     height: 2rem;
     cursor: pointer;
+    background: none;
 }
 .deleteFavorite svg {
     width: 100%;
@@ -208,13 +218,14 @@ main {
     height: clamp(2.2rem, 7vw, 3rem);
     width: clamp(2.2rem, 7vw, 3rem);
     cursor: pointer;
+    background: none;
 }
 #exportsButtonsContainer {
     display: flex;
     flex-wrap: wrap;
-    width: 30%;
-    min-width: 30rem;
-    justify-content: space-between;
+    width: min(100%, 34rem);
+    justify-content: center;
+    gap: 1rem;
     margin-top: 2rem;
 }
 .exportButton {
@@ -250,6 +261,7 @@ main {
     }
     #generatePaletteBtn {
         width: min(100%, 22rem);
+        padding: 0.5rem;
     }
     #buttonsContainer {
         gap: 1rem;
@@ -293,10 +305,7 @@ main {
         height: 16rem;
         min-width: 100%;
     }
-    #exportsButtonsContainer {
-        min-width: 15rem;
-    }
     .exportButton {
-        font-size: 0.6rem;
+        font-size: 0.8rem;
     }
 }

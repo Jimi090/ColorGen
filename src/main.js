@@ -7,7 +7,8 @@ var dic = {};
 function generatePalette() {
     const base = chroma.random();
 
-    const hue = base.get('lch.h');
+    const rawHue = base.get('lch.h');
+    const hue = Number.isFinite(rawHue) ? rawHue : Math.random() * 360;
 
     return chroma
         .scale([
@@ -30,30 +31,18 @@ function getTextColor(background) {
 }
 function showPalette(palette) {
     paletteGlobal = palette;
-    document.getElementById('color1').style.backgroundColor = palette[0];
-    document.getElementById('color1').textContent = palette[0];
-    document.getElementById('color1').style.color = getTextColor(palette[0]);
-    document.getElementById('color1').dataset.color = palette[0];
-
-    document.getElementById('color2').style.backgroundColor = palette[1];
-    document.getElementById('color2').textContent = palette[1];
-    document.getElementById('color2').style.color = getTextColor(palette[1]);
-    document.getElementById('color2').dataset.color = palette[1];
-
-    document.getElementById('color3').style.backgroundColor = palette[2];
-    document.getElementById('color3').textContent = palette[2];
-    document.getElementById('color3').style.color = getTextColor(palette[2]);
-    document.getElementById('color3').dataset.color = palette[2];
-
-    document.getElementById('color4').style.backgroundColor = palette[3];
-    document.getElementById('color4').textContent = palette[3];
-    document.getElementById('color4').style.color = getTextColor(palette[3]);
-    document.getElementById('color4').dataset.color = palette[3];
-
-    document.getElementById('color5').style.backgroundColor = palette[4];
-    document.getElementById('color5').textContent = palette[4];
-    document.getElementById('color5').style.color = getTextColor(palette[4]);
-    document.getElementById('color5').dataset.color = palette[4];
+    for (let i = 0; i <= 4; i++) {
+        document.getElementById('color' + (i + 1)).style.backgroundColor =
+            palette[i];
+        document.getElementById('color' + (i + 1)).textContent = palette[i];
+        document.getElementById('color' + (i + 1)).style.color = getTextColor(
+            palette[i],
+        );
+        document.getElementById('color' + (i + 1)).dataset.color = palette[i];
+        document
+            .getElementById('color' + (i + 1))
+            .setAttribute('aria-label', `Copy color ${palette[i]}`);
+    }
 }
 function alertSth(text, time) {
     document.getElementById('copiedAlert').textContent = text;
@@ -69,21 +58,25 @@ function addToFavorites(palette) {
     paletteContainer.dataset.palette = palette;
     dic[paletteContainer.dataset.palette] = palette;
     for (let i = 0; i <= 4; i++) {
-        const box = document.createElement('div');
+        const box = document.createElement('button');
 
+        box.type = 'button';
         box.className = 'favoritesColorBoxes';
         box.title = 'Copy!';
         box.textContent = palette[i];
         box.style.backgroundColor = palette[i];
         box.style.color = getTextColor(palette[i]);
         box.dataset.color = palette[i];
+        box.setAttribute('aria-label', `Copy color ${palette[i]}`);
 
         paletteContainer.appendChild(box);
     }
-    const deleteBtn = document.createElement('div');
-    deleteBtn.className = 'deleteFavorite';
+    const deleteButton = document.createElement('button');
+    deleteButton.type = 'button';
+    deleteButton.className = 'deleteFavorite';
+    deleteButton.setAttribute('aria-label', 'Remove palette from favorites');
 
-    deleteBtn.innerHTML = `
+    deleteButton.innerHTML = `
         <svg
                             style="margin-top: 16px"
                             version="1.1"
@@ -166,14 +159,13 @@ function addToFavorites(palette) {
                             </g>
                         </svg>
         `;
-
-    deleteBtn.addEventListener('click', () => {
+    deleteButton.addEventListener('click', () => {
         paletteContainer.remove();
         favorites.delete(dic[paletteContainer.dataset.palette]);
         saveFavorites(favorites);
         alertSth('Removed', 1000);
     });
-    paletteContainer.appendChild(deleteBtn);
+    paletteContainer.appendChild(deleteButton);
 
     container.appendChild(paletteContainer);
 }
@@ -203,8 +195,12 @@ document.addEventListener('click', (e) => {
         e.target.className == 'colorBoxes'
     ) {
         let color = e.target.dataset.color;
-        navigator.clipboard.writeText(color);
-        alertSth('Copied!', 1000);
+        try {
+            navigator.clipboard.writeText(color);
+            alertSth('Copied!', 1000);
+        } catch {
+            alertSth('Could not copy', 1600);
+        }
     }
 });
 
@@ -218,7 +214,6 @@ document.getElementById('likeButton').addEventListener('click', () => {
     favorites.add(paletteGlobal);
     alertSth('Added to favorites', 1000);
     saveFavorites(favorites);
-    console.log(favorites);
 });
 
 //close favorites
@@ -248,8 +243,12 @@ document.getElementById('copyCSS').addEventListener('click', () => {
     --success: ${paletteGlobal[3]};
     --danger: ${paletteGlobal[4]};
 }`;
-    navigator.clipboard.writeText(text);
-    alertSth('Copied!', 1000);
+    try {
+        navigator.clipboard.writeText(text);
+        alertSth('Copied!', 1000);
+    } catch {
+        alertSth('Could not copy', 1600);
+    }
 });
 
 //copy Tailwind
@@ -267,8 +266,12 @@ document.getElementById('copyTailwind').addEventListener('click', () => {
         }
     }
 }`;
-    navigator.clipboard.writeText(text);
-    alertSth('Copied!', 1000);
+    try {
+        navigator.clipboard.writeText(text);
+        alertSth('Copied!', 1000);
+    } catch {
+        alertSth('Could not copy', 1600);
+    }
 });
 
 //copy JSON
@@ -284,6 +287,10 @@ document.getElementById('copyJSON').addEventListener('click', () => {
         null,
         4,
     );
-    navigator.clipboard.writeText(text);
-    alertSth('Copied!', 1000);
+    try {
+        navigator.clipboard.writeText(text);
+        alertSth('Copied!', 1000);
+    } catch {
+        alertSth('Could not copy', 1600);
+    }
 });

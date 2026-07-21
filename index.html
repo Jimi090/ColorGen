@@ -3,19 +3,24 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="src/styles.css" />
+        <meta
+            name="description"
+            content="Generate, copy, export and save beautiful color palettes."
+        />
+        <link rel="stylesheet" href="/src/styles.css" />
+        <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
         <title>Color Palette Generator</title>
     </head>
     <body>
         <header>
             <span style="color: #ff3333">Color</span>
-            <span style="color: #779933">Palette</span>
+            <span style="color: #23b246">Palette</span>
             <span style="color: #0092cc">Generator</span>
         </header>
         <main>
-            <button id="generatePaletteBtn">Generate</button>
-            <div id="buttonsContainer">
-                <button id="dislikeButton">
+            <button id="generatePaletteBtn" type="button">Generate</button>
+            <div id="buttonsContainer" type="button">
+                <button id="dislikeButton" type="button">
                     Move to trash
                     <svg
                         style="margin-top: 16px"
@@ -26,6 +31,7 @@
                         viewBox="0 0 512 512"
                         xml:space="preserve"
                         fill="#000000"
+                        aria-label="trash icon"
                     >
                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                         <g
@@ -100,11 +106,36 @@
                     </svg>
                 </button>
                 <div id="paletteContainer">
-                    <div id="color1" class="colorBoxes" title="Copy!">1</div>
-                    <div id="color2" class="colorBoxes" title="Copy!">2</div>
-                    <div id="color3" class="colorBoxes" title="Copy!">3</div>
-                    <div id="color4" class="colorBoxes" title="Copy!">4</div>
-                    <div id="color5" class="colorBoxes" title="Copy!">5</div>
+                    <button
+                        id="color1"
+                        class="colorBoxes"
+                        type="button"
+                        title="Copy!"
+                    ></button>
+                    <button
+                        id="color2"
+                        class="colorBoxes"
+                        type="button"
+                        title="Copy!"
+                    ></button>
+                    <button
+                        id="color3"
+                        class="colorBoxes"
+                        type="button"
+                        title="Copy!"
+                    ></button>
+                    <button
+                        id="color4"
+                        class="colorBoxes"
+                        type="button"
+                        title="Copy!"
+                    ></button>
+                    <button
+                        id="color5"
+                        class="colorBoxes"
+                        type="button"
+                        title="Copy!"
+                    ></button>
                 </div>
                 <button id="likeButton">
                     Add to favorites
@@ -114,6 +145,7 @@
                         version="1.1"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="#ff3333"
+                        aria-label="heatrh icon"
                     >
                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                         <g
@@ -142,7 +174,7 @@
                 <button class="exportButton" id="copyJSON">Copy JSON</button>
             </div>
         </main>
-        <div id="favoritesButton">
+        <button id="favoritesButton" type="button">
             Favorites
             <svg
                 viewBox="0 0 1024 1024"
@@ -150,6 +182,7 @@
                 version="1.1"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="#ff3333"
+                aria-label="heatrh icon"
             >
                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                 <g
@@ -168,11 +201,11 @@
                     ></path>
                 </g>
             </svg>
-        </div>
+        </button>
         <div id="favoritesContainer">
             <div id="favoritesHeader">Favorites</div>
             <div id="favoritesBoxesContainer"></div>
-            <div id="closeFavorites">
+            <button id="closeFavorites">
                 <svg
                     viewBox="0 0 24 24"
                     fill="none"
@@ -197,9 +230,9 @@
                         ></path>
                     </g>
                 </svg>
-            </div>
+            </button>
         </div>
         <div id="copiedAlert"></div>
+        <script src="src/main.js" type="module"></script>
     </body>
-    <script src="src/main.js" type="module"></script>
 </html>
