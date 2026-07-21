@@ -6,9 +6,8 @@
 }
 body {
     background-color: #000;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    width: 100%;
+    height: 100vh;
 }
 header {
     width: 100%;
@@ -17,7 +16,7 @@ header {
     font-size: 4rem;
 }
 main {
-    max-width: 70%;
+    width: 100%;
     height: fit-content;
     display: flex;
     align-items: center;
@@ -25,8 +24,9 @@ main {
     flex-wrap: wrap;
     flex-direction: column;
     margin-top: 2rem;
+    position: relative;
 }
-#generetePaletteBtn {
+#generatePaletteBtn {
     background-color: #323232;
     font-size: 2.5rem;
     padding: 1rem;
@@ -37,14 +37,121 @@ main {
 #generetePaletteBtn:hover {
     color: #dcd427;
 }
+#buttonsContainer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
 #paletteContainer {
-    width: fit-content;
+    width: 60%;
+    max-width: 40rem;
     height: fit-content;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 .colorBoxes {
-    width: 40rem;
+    width: 100%;
     height: 8rem;
     background-color: yellow;
     text-align: end;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0 1rem;
+}
+#copiedAlert {
+    position: absolute;
+    right: 28%;
+    top: 8rem;
+    background-color: #282828;
+    padding: 1rem;
+    border-radius: 2rem;
+    font-size: 1.5rem;
+    display: none;
+    color: #f0f0f0;
+}
+#dislikeButton,
+#likeButton {
+    max-height: 15rem;
+    max-width: 15rem;
+    background-color: #000;
+    text-align: center;
     font-size: 2rem;
+    cursor: pointer;
+    margin-left: 8%;
+}
+#likeButton {
+    margin-left: 0;
+    margin-right: 8%;
+}
+#favoritesButton {
+    position: absolute;
+    top: 1rem;
+    right: 4rem;
+    font-size: 1.5rem;
+    display: flex;
+    padding: 8px;
+    border: #323232 solid 2px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+#favoritesButton svg {
+    width: 2rem;
+    height: 2rem;
+    margin-left: 6px;
+}
+#favoritesContainer {
+    width: 80%;
+    height: 80vh;
+    position: absolute;
+    background-color: #323232;
+    top: 10vh;
+    left: 10%;
+    border-radius: 2rem;
+    padding: 1rem;
+    display: none;
+}
+#favoritesHeader {
+    width: 100%;
+    height: fit-content;
+    text-align: center;
+    font-size: 3rem;
+}
+#favoritesBoxesContainer {
+    display: flex;
+    flex-wrap: wrap;
+    max-height: 90%;
+    overflow-y: auto;
+}
+.favoritesPaletteContainer {
+    width: 23%;
+    margin: 1%;
+    height: 20rem;
+    text-align: right;
+    position: relative;
+}
+.favoritesColorBoxes {
+    width: 96%;
+    padding: 0 2%;
+    height: 20%;
+    background-color: #dcd427;
+    cursor: pointer;
+}
+.deleteFavorite {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 0.5rem;
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+}
+#closeFavorites {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    height: 3rem;
+    width: 3rem;
+    cursor: pointer;
 }
