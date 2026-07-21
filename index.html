@@ -12,11 +12,13 @@
         <title>Color Palette Generator</title>
     </head>
     <body>
-        <header>
-            <span style="color: #ff3333">Color</span>
-            <span style="color: #23b246">Palette</span>
-            <span style="color: #0092cc">Generator</span>
-        </header>
+        <a href="/">
+            <header>
+                <span style="color: #ff3333">Color</span>
+                <span style="color: #23b246">Palette</span>
+                <span style="color: #0092cc">Generator</span>
+            </header>
+        </a>
         <main>
             <button id="generatePaletteBtn" type="button">Generate</button>
             <div id="buttonsContainer" type="button">
@@ -171,6 +173,7 @@
                 <button class="exportButton" id="copyTailwind">
                     Copy Tailwind
                 </button>
+
                 <button class="exportButton" id="copyJSON">Copy JSON</button>
             </div>
         </main>
@@ -233,6 +236,6 @@
             </button>
         </div>
         <div id="copiedAlert"></div>
-        <script src="src/main.js" type="module"></script>
+        <script src="/src/main.js" type="module"></script>
     </body>
 </html>

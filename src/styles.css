@@ -17,6 +17,9 @@ button {
     color: inherit;
     border: 0;
 }
+a {
+    text-decoration: none;
+}
 button:focus-visible {
     outline: 3px solid #dcd427;
     outline-offset: 4px;
@@ -49,7 +52,6 @@ main {
     margin-bottom: clamp(1.5rem, 5vw, 3rem);
     max-width: 100%;
 }
-
 #generatePaletteBtn:hover {
     color: #dcd427;
 }

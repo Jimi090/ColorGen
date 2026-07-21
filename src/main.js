@@ -182,7 +182,7 @@ function saveFavorites(favorites) {
 
 showPalette(generatePalette());
 
-//generate button
+//generate button action
 document.getElementById('generatePaletteBtn').addEventListener('click', () => {
     let palette = generatePalette();
     showPalette(palette);
