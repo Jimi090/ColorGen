@@ -1,6 +1,7 @@
 # 🎨 ColorGen
 
 Color Palette Generator. Simple, fast and private. Mady by developer for developers.
+Created for HackClub Anvil!
 
 <p align="center">
   <a href="#features">Features</a>
